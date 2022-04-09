@@ -21,6 +21,29 @@ public class ContactsManager {
     private Path directoryPath;
     private Path filePath;
 
+    // GETS
+    public String getFilename() {
+        return filename;
+    }
+    public String getDirectory() {
+        return directory;
+    }
+    public List<String> getFileData() {
+        return fileData;
+    }
+    public Path getDirectoryPath() {
+        return directoryPath;
+    }
+    public Path getFilePath() {
+        return filePath;
+    }
+
+
+    // SETS
+
+
+
+
     // CON
     public ContactsManager(String filename, String directory) {
         this.filename = filename;
@@ -32,6 +55,13 @@ public class ContactsManager {
 
         this.fileData = getFile();
     }
+
+
+
+
+
+
+
 
     // METHS
     // Part of CON
@@ -96,6 +126,8 @@ public class ContactsManager {
 
     // Delete
 
+
+    // TEST...
 
 
 
