@@ -1,4 +1,4 @@
-# Contacts Command Line Interface (CLI)
+# Contact Command Line Interface (CLI)
 Command Line Interface to manage a contact list
 
 ## Assignment Objectives:
