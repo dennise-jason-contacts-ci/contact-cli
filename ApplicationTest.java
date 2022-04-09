@@ -1,4 +1,4 @@
-public class ContactsManagerTester {
+public class ApplicationTest {
     public static void main(String[] args) {
 
     ContactsManager contactsManager = new ContactsManager("contacts.txt", "data");

@@ -34,7 +34,7 @@ public class ContactsManager {
 
     // METHS
     // Returns the file data
-    public List<String> getFile(){
+    private List<String> getFile(){
 
         // Checks dir exist
         try {
@@ -65,7 +65,7 @@ public class ContactsManager {
 
     }
 
-    // Way to print all the lines of the file so we can see its contents quickly
+    // Read
     public void printLines() {
         for (String line : fileData) {
             System.out.println(line);
