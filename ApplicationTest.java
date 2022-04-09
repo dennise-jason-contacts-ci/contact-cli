@@ -3,9 +3,10 @@ public class ApplicationTest {
 
     ContactPrograms contactPrograms = new ContactPrograms();
 //    contactPrograms.findContactByName("Enter First Name");
-    contactPrograms.findContactByName("Enter First Name", "Enter Last Name");
+//    contactPrograms.findContactByName("Enter First Name", "Enter Last Name");
 //    contactPrograms.checkContactExists("John", "Smith");
 //    contactPrograms.addContact();
+     contactPrograms.addContact();
 
 
 

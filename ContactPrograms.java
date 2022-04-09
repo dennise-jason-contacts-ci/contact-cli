@@ -28,40 +28,57 @@ public class ContactPrograms {
     // METHS
     // Add
     public void addContact(){
-        String name = input.getString("Enter First Name: ") +
-                " " +
-                input.getString("Enter Last Name: ");
+        String fName = input.getString("Enter First Name: ");
+        String lName = input.getString("Enter Last Name: ");
         String phone = input.getString("Enter Phone Number: ");
         String email = input.getString("Enter Email: ");
-        contactsManager.addLines(name + ", " + phone + ", " + email);
-        contactsManager.printLines();
+
+        if (checkContactExists(fName, lName)) {
+            System.out.println("Would Like to Continue?  ");
+            if(input.yesNo()){
+                contactsManager.addLines(fName + " " +
+                        lName + ", " + phone + ", " + email);
+                contactsManager.printLines();
+            } else {
+                System.out.println("This function has terminated... ");
+            }
+        } else {
+            contactsManager.addLines(fName + " " +
+                    lName + ", " + phone + ", " + email);
+            contactsManager.printLines();
+        }
+
     }
 
 
 
     // Find
-    public void findContactByName(String prompt){
-        String name = input.getString(prompt);
+    public void findContactByFirstName(){
+        String name = input.getString("Enter First Name: ");
         for (String line : contactsManager.getFileData()) {
             if (checkFirstName(line.toLowerCase(), name.toLowerCase())){
                 System.out.println(line);
             }
         }
     }
-    public void findContactByName(String prompt1, String prompt2){
-        String name1 = input.getString(prompt1);
-        String name2 = input.getString(prompt2);
+    public void findContactByLastName(){
+        String name = input.getString("Enter Last Name: ");
         for (String line : contactsManager.getFileData()) {
-//            System.out.println(line);
-//            System.out.println(name2);
-            if (
-                    checkFirstName(line.toLowerCase(), name1.toLowerCase())
+            if (checkLastName(line.toLowerCase(), name.toLowerCase())){
+                System.out.println(line);
+            }
+        }
+    }
+    public void findContactByBothName(){
+        String name1 = input.getString("Enter First Name: ");
+        String name2 = input.getString("Enter Last Name: ");
+        for (String line : contactsManager.getFileData()) {
+            if (checkFirstName(line.toLowerCase(), name1.toLowerCase())
                     &&
                     checkLastName(line.toLowerCase(), name2.toLowerCase())){
                 System.out.println(line);
             }
         }
-
     }
 
     // CHECKS
@@ -72,10 +89,12 @@ public class ContactPrograms {
         return name.contains(line.substring(line.indexOf(" ") + 1, line.indexOf(",")));
     }
 
-    public boolean checkContactExists(String name1, String name2){
+    private boolean checkContactExists(String name1, String name2){
         for (String line : contactsManager.getFileData()) {
-            if (checkFirstName(line, name1) && checkLastName(line, name2)){
-                System.out.println("That name already exists.");
+            if (checkFirstName(line.toLowerCase(), name1.toLowerCase())
+                            &&
+                            checkLastName(line.toLowerCase(), name2.toLowerCase())){
+                System.out.println("That contact already exists.");
                 return true;
             }
         }
