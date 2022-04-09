@@ -2,6 +2,7 @@ import util.Input;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 /**
  *  CONTACT PROGRAMS
@@ -42,7 +43,7 @@ public class ContactPrograms {
     public void findContactByName(String prompt){
         String name = input.getString(prompt);
         for (String line : contactsManager.getFileData()) {
-            if (line.contains(name)){
+            if (checkFirstName(line.toLowerCase(), name.toLowerCase())){
                 System.out.println(line);
             }
         }
@@ -51,17 +52,29 @@ public class ContactPrograms {
         String name1 = input.getString(prompt1);
         String name2 = input.getString(prompt2);
         for (String line : contactsManager.getFileData()) {
-            if (line.contains(name1) && line.contains(name2)){
+//            System.out.println(line);
+//            System.out.println(name2);
+            if (
+                    checkFirstName(line.toLowerCase(), name1.toLowerCase())
+                    &&
+                    checkLastName(line.toLowerCase(), name2.toLowerCase())){
                 System.out.println(line);
             }
         }
+
     }
 
-
     // CHECKS
+    private boolean checkFirstName(String line, String name){
+        return name.equals(line.substring(0, line.indexOf(" ")));
+    }
+    private boolean checkLastName(String line, String name){
+        return name.contains(line.substring(line.indexOf(" ") + 1, line.indexOf(",")));
+    }
+
     public boolean checkContactExists(String name1, String name2){
         for (String line : contactsManager.getFileData()) {
-            if (line.contains(name1) && line.contains(name2)){
+            if (checkFirstName(line, name1) && checkLastName(line, name2)){
                 System.out.println("That name already exists.");
                 return true;
             }
