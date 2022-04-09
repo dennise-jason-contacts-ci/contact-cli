@@ -3,20 +3,20 @@ Command Line Interface to manage a contact list
 
 ## Assignment Objectives:
 - [X] Show all your contacts
-- [] Add a new contact
-- [] Search a contact by their name
+- [X] Add a new contact
+- [X] Search a contact by their name
 - [] Delete an existing contact
-- [] Keep data inside a contacts.txt
+- [X] Keep data inside a contacts.txt <br/>
 Bonus...
 - [] Format the phone numbers using dashes
 - [] Allow formatting phone numbers with different lengths
 - [] Warn user when entering duplicate contact... provide a (Y/N) response 
 Other Ideas...
-- [] Include email
+- [X] Include email
 - [] Backup
 
 ## Assignment Recommendations:
-- The text file shoud contain w=one contact per line
+- The text file should contain one contact per line
 - When the application starts, the contact list should be read from the file. 
 - Before the application exits, the contacts file should be rewritten. 
 

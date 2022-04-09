@@ -25,6 +25,19 @@ public class ContactPrograms {
 
 
     // METHS
+    // Add
+    public void addContact(){
+        String name = input.getString("Enter First Name: ") +
+                " " +
+                input.getString("Enter Last Name: ");
+        String phone = input.getString("Enter Phone Number: ");
+        String email = input.getString("Enter Email: ");
+        contactsManager.addLines(name + ", " + phone + ", " + email);
+        contactsManager.printLines();
+    }
+
+
+
     // Find
     public void findContactByName(String prompt){
         String name = input.getString(prompt);
