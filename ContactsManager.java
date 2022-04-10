@@ -114,14 +114,16 @@ public class ContactsManager {
     public List<String> deleteLine(String delString){
         for(String line : fileData){
             if (line.equals(delString)){
-                System.out.println("Found the line...");
+                System.out.println("Found the Contact...");
                 fileData.remove(delString);
                 writeFile();
-                System.out.println("Line Deleted");
+                System.out.println("Contact: " +
+                        delString.substring(0, delString.indexOf(",")) +
+                        " was deleted.");
                 return fileData;
             }
         }
-        System.out.println("Nothing Deleted");
+        System.out.println("Error, unable to Delete.");
         return fileData;
     }
 

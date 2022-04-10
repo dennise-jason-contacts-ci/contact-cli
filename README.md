@@ -5,12 +5,12 @@ Command Line Interface to manage a contact list
 - [X] Show all your contacts
 - [X] Add a new contact
 - [X] Search a contact by their name
-- [] Delete an existing contact
+- [X] Delete an existing contact
 - [X] Keep data inside a contacts.txt <br/>
 Bonus...
 - [] Format the phone numbers using dashes
 - [] Allow formatting phone numbers with different lengths
-- [X] Warn user when entering duplicate contact... provide a (Y/N) response 
+- [X] Warn user when entering duplicate contact... provide a (Y/N) response <br/>
 Other Ideas...
 - [X] Include email
 - [] Backup
@@ -34,7 +34,7 @@ Other Ideas...
    </span>
    Description:
    <span style="color:#7ca9f2">
-   TEXT
+   At the moment, we do not need contact objects.  This could be used later if the scope of the project demands it.
    </span>
 
 3. ContactManager class: <br/>

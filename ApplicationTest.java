@@ -16,6 +16,7 @@ public class ApplicationTest {
 //        contactsManager.deleteLine("Smash Moon, 456-789-2583, moon@here.com");
 //        System.out.println("--------------------------------------------");
 //        contactsManager.printLines();
+        contactPrograms.deleteContact();
 
 
     }  //  <--END MAIN

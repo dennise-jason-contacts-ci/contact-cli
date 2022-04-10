@@ -36,8 +36,6 @@ public class ContactPrograms {
 
     // Sort Contacts
 
-    // Delete Contact
-
 
     // Add
     public void addContact(){
@@ -66,6 +64,23 @@ public class ContactPrograms {
         }
     }
 
+    // Delete Contact
+    public void deleteContact(){
+        String contactLine = findContactByBothName(true);
+        if(contactLine.length() > 0){
+            if(input.yesNo("Contact Found.  Confirm Delete Contact: (Y/N)  ")){
+                contactsManager.deleteLine(contactLine);
+                System.out.println("--------------------------------------------");
+            } else {
+                System.out.println("No Contact Was Deleted.");
+                System.out.println("--------------------------------------------");
+            }
+        } else {
+            System.out.println("No Contact Was Deleted.");
+            System.out.println("--------------------------------------------");
+        }
+
+    }
 
     // Find
     public void findContactByFirstName(){
@@ -84,7 +99,9 @@ public class ContactPrograms {
             }
         }
     }
-    public void findContactByBothName(){
+    public String findContactByBothName(boolean flag){
+        if (!flag) return "";
+
         String name1 = input.getString("Enter First Name: ");
         String name2 = input.getString("Enter Last Name: ");
         for (String line : contactsManager.getFileData()) {
@@ -92,9 +109,13 @@ public class ContactPrograms {
                     &&
                     checkLastName(line.toLowerCase(), name2.toLowerCase())){
                 System.out.println(line);
+                return line;
             }
         }
+        System.out.println(name1 + " " + name2 + " was not found.");
+        return findContactByBothName(input.yesNo("Try again?  (Y/N)"));
     }
+
 
     // CHECKS
     private boolean checkFirstName(String line, String name){
@@ -114,17 +135,6 @@ public class ContactPrograms {
         }
         return false;
     }
-//    private String checkContactExists(String name1, String name2, String prompt){
-//        for (String line : contactsManager.getFileData()) {
-//            if (checkFirstName(line.toLowerCase(), name1.toLowerCase())
-//                    &&
-//                    checkLastName(line.toLowerCase(), name2.toLowerCase())){
-//                System.out.println(prompt);
-//                return line;
-//            }
-//        }
-//        return "";
-//    }
 
 
 
