@@ -10,7 +10,7 @@ Command Line Interface to manage a contact list
 Bonus...
 - [] Format the phone numbers using dashes
 - [] Allow formatting phone numbers with different lengths
-- [] Warn user when entering duplicate contact... provide a (Y/N) response 
+- [X] Warn user when entering duplicate contact... provide a (Y/N) response 
 Other Ideas...
 - [X] Include email
 - [] Backup
@@ -54,7 +54,7 @@ Other Ideas...
 4. ContactPrograms: <br/>
    Fields:
    <span style="color:#7ca9f2">
-   (FIELDS) <br/>
+   (ContactManger[inst], Input[inst]) <br/>
    </span>
    Methods:
    <span style="color:#7ca9f2">

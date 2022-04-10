@@ -1,5 +1,6 @@
 import util.Input;
 
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -7,7 +8,7 @@ import java.util.Locale;
 /**
  *  CONTACT PROGRAMS
  *
- *  Description: Combines cm crud functions into larger programs the user
+ *  Description: Combines cm crud and file i/o functions into larger programs the user
  *  within the ca menus
  */
 
@@ -26,16 +27,30 @@ public class ContactPrograms {
 
 
     // METHS
+    // Read All
+    public void readAllContacts(){
+        contactsManager.printLines();
+    }
+
+    // Mod Contact
+
+    // Sort Contacts
+
+    // Delete Contact
+
+
     // Add
     public void addContact(){
         String fName = input.getString("Enter First Name: ");
         String lName = input.getString("Enter Last Name: ");
-        String phone = input.getString("Enter Phone Number: ");
-        String email = input.getString("Enter Email: ");
+        String phone = "";
+        String email = "";
 
         if (checkContactExists(fName, lName)) {
             System.out.println("Would Like to Continue?  ");
             if(input.yesNo()){
+                phone = input.getString("Enter Phone Number: ");
+                email = input.getString("Enter Email: ");
                 contactsManager.addLines(fName + " " +
                         lName + ", " + phone + ", " + email);
                 contactsManager.printLines();
@@ -43,13 +58,13 @@ public class ContactPrograms {
                 System.out.println("This function has terminated... ");
             }
         } else {
+            phone = input.getString("Enter Phone Number: ");
+            email = input.getString("Enter Email: ");
             contactsManager.addLines(fName + " " +
                     lName + ", " + phone + ", " + email);
             contactsManager.printLines();
         }
-
     }
-
 
 
     // Find
@@ -88,7 +103,6 @@ public class ContactPrograms {
     private boolean checkLastName(String line, String name){
         return name.contains(line.substring(line.indexOf(" ") + 1, line.indexOf(",")));
     }
-
     private boolean checkContactExists(String name1, String name2){
         for (String line : contactsManager.getFileData()) {
             if (checkFirstName(line.toLowerCase(), name1.toLowerCase())
@@ -100,7 +114,17 @@ public class ContactPrograms {
         }
         return false;
     }
-
+//    private String checkContactExists(String name1, String name2, String prompt){
+//        for (String line : contactsManager.getFileData()) {
+//            if (checkFirstName(line.toLowerCase(), name1.toLowerCase())
+//                    &&
+//                    checkLastName(line.toLowerCase(), name2.toLowerCase())){
+//                System.out.println(prompt);
+//                return line;
+//            }
+//        }
+//        return "";
+//    }
 
 
 

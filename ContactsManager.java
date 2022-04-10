@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ContactsManager {
@@ -20,6 +21,20 @@ public class ContactsManager {
 
     private Path directoryPath;
     private Path filePath;
+
+
+    // CON
+    public ContactsManager(String filename, String directory) {
+        this.filename = filename;
+        this.directory = directory;
+
+        // PATHS FOR DIR AND FILES
+        this.directoryPath = Paths.get(directory);
+        this.filePath = Paths.get(directory, filename);
+
+        this.fileData = getFile();
+    }
+
 
     // GETS
     public String getFilename() {
@@ -37,30 +52,6 @@ public class ContactsManager {
     public Path getFilePath() {
         return filePath;
     }
-
-
-    // SETS
-
-
-
-
-    // CON
-    public ContactsManager(String filename, String directory) {
-        this.filename = filename;
-        this.directory = directory;
-
-        // PATHS FOR DIR AND FILES
-        this.directoryPath = Paths.get(directory);
-        this.filePath = Paths.get(directory, filename);
-
-        this.fileData = getFile();
-    }
-
-
-
-
-
-
 
 
     // METHS
@@ -118,13 +109,20 @@ public class ContactsManager {
         }
     }
 
-    // Read Line
-
-
-    // Update
-
 
     // Delete
+    public List<String> deleteLine(String delString){
+        for(String line : fileData){
+            if (line.equals(delString)){
+                System.out.println("Found the line...");
+//                fileData.remove(delString);
+                return fileData;
+            }
+        }
+        return fileData;
+    }
+
+    // Mod (update)
 
 
     // TEST...
