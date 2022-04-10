@@ -115,10 +115,13 @@ public class ContactsManager {
         for(String line : fileData){
             if (line.equals(delString)){
                 System.out.println("Found the line...");
-//                fileData.remove(delString);
+                fileData.remove(delString);
+                writeFile();
+                System.out.println("Line Deleted");
                 return fileData;
             }
         }
+        System.out.println("Nothing Deleted");
         return fileData;
     }
 

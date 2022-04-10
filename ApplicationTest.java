@@ -10,7 +10,12 @@ public class ApplicationTest {
 //        contactPrograms.addContact();
 //        contactPrograms.addContact();
 //        contactPrograms.readAllContacts();
-        contactsManager.deleteLine("Smash Moon, 456-789-2583, moon@here.com");
+
+//        contactsManager.printLines();
+//        System.out.println("--------------------------------------------");
+//        contactsManager.deleteLine("Smash Moon, 456-789-2583, moon@here.com");
+//        System.out.println("--------------------------------------------");
+//        contactsManager.printLines();
 
 
     }  //  <--END MAIN
