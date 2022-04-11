@@ -84,9 +84,8 @@ public class ContactsManager {
         return data;
     }
 
-    // Create
+    // Write
     public boolean writeFile() {
-
         try {
             Files.write(filePath, fileData);
         } catch (IOException e) {
@@ -96,13 +95,14 @@ public class ContactsManager {
         return true;
     }
 
+    // Add
     public List<String> addLines(String string) {
         fileData.add(string);
         writeFile();
         return fileData;
     }
 
-    // Read All Lines
+    // Read
     public void printLines() {
         for (String line : fileData) {
             System.out.println(line);
@@ -128,7 +128,21 @@ public class ContactsManager {
     }
 
     // Mod (update)
-
+    public List<String> modLine(String modLine, String changedLine){
+        for(String line : fileData){
+            if (line.equals(modLine)){
+                fileData.remove(modLine);
+                fileData.add(changedLine);
+                writeFile();
+                System.out.println("Contact: " +
+                        modLine.substring(0, modLine.indexOf(",")) +
+                        " was changed.");
+                return fileData;
+            }
+        }
+        System.out.println("Error, unable to change contact.");
+        return fileData;
+    }
 
     // TEST...
 

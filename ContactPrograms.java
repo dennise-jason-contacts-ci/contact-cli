@@ -33,8 +33,75 @@ public class ContactPrograms {
     }
 
     // Mod Contact
+    public void modContact(){
+        String mContact = findContactByBothName(true);
+        String changeContact = "";
+        if(mContact.length() > 0) {
+            int menuChoice = chooseModMenu(mContact);
+            chooseModOption(menuChoice, mContact);
+        }
 
-    // Sort Contacts
+
+    }
+
+    // Mod Contact <-- HELPERS
+    private String modName(String mainLine){
+        String fName = input.getString("Enter First Name: ");
+        String lName = input.getString("Enter Last Name: ");
+        return fName + " " + lName + mainLine.substring(mainLine.indexOf(","));
+    }
+    private String modPhone(String mainLine){
+        String phone = input.getString("Enter First Phone Number: ");
+        int first = mainLine.indexOf(",");
+        int end = mainLine.indexOf(",", first + 1);
+        return mainLine.substring(0, first) + phone + mainLine.substring(end);
+    }
+    private String modEmail(String mainLine){
+        String email = input.getString("Enter First Email: ");
+        int first = mainLine.indexOf(",");
+        int end = mainLine.indexOf(",", first + 1);
+        return mainLine.substring(0, end) + ", " + email;
+    }
+    private String modAll(String mainLine){
+        String fName = input.getString("Enter First Name: ");
+        String lName = input.getString("Enter Last Name: ");
+        String phone = input.getString("Enter First Phone Number: ");
+        String email = input.getString("Enter First Email: ");
+
+        int first = mainLine.indexOf(",");
+        int end = mainLine.indexOf(",", first + 1);
+        return fName + " " + lName + ", " + phone + ", " + email;
+    }
+
+    private int chooseModMenu(String mainLine){
+        System.out.println("Warning! Now modifying contact: " + mainLine);
+        return input.getInt(1, 4,"Choose which part of the contact you would like to edit.\n" +
+                "--> Must Select a Number <--\n" +
+                "1. Name\n" +
+                "2. Phone\n" +
+                "3. Email\n" +
+                "4. The Entire Contact");
+    }
+    private String chooseModOption(int choice, String mainLine){
+        switch (choice){
+            case 1:
+                System.out.println(mainLine);
+                return modName(mainLine);
+            case 2:
+                System.out.println(mainLine);
+                return modPhone(mainLine);
+            case 3:
+                System.out.println(mainLine);
+                return modEmail(mainLine);
+            case 4:
+                System.out.println(mainLine);
+                return modAll(mainLine);
+            default:
+                return "";
+        }
+    }
+
+
 
 
     // Add
