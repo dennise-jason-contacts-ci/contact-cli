@@ -9,7 +9,7 @@ import java.util.Locale;
  *  CONTACT PROGRAMS
  *
  *  Description: Combines cm crud and file i/o functions into larger programs the user
- *  within the ca menus
+ *               within the ca menus
  */
 
 
@@ -108,8 +108,6 @@ public class ContactPrograms {
                 return "";
         }
     }
-
-
 
 
     // Add

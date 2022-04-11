@@ -6,4 +6,4 @@ John Jacob, 123-456-7892, john555@amail.com
 Calvin Cameron, 456-789-1234, calvin@theplace.com
 Mocha Cameron, 789-456-1234, mocha@thisplace.com
 Smash Moon, 456-789-2583, moon@here.com
-Roger Ready, 111-111-1111, roger@roger.com
+Roger Roger, 111-111-1111, roger@roger.com
