@@ -13,6 +13,8 @@ Bonus...
 - [X] Warn user when entering duplicate contact... provide a (Y/N) response <br/>
 Other Ideas...
 - [X] Include email
+- [X] Allow contact modifications
+- [] Check Email validity 
 - [] Backup
 
 ## Assignment Recommendations:

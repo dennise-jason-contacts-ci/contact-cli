@@ -37,19 +37,19 @@ public class ContactsManager {
 
 
     // GETS
-    public String getFilename() {
+    private String getFilename() {
         return filename;
     }
-    public String getDirectory() {
+    private String getDirectory() {
         return directory;
     }
     public List<String> getFileData() {
         return fileData;
     }
-    public Path getDirectoryPath() {
+    private Path getDirectoryPath() {
         return directoryPath;
     }
-    public Path getFilePath() {
+    private Path getFilePath() {
         return filePath;
     }
 

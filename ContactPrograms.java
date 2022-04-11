@@ -29,7 +29,10 @@ public class ContactPrograms {
     // METHS
     // Read All
     public void readAllContacts(){
+        System.out.println("Name \t|\t Phone Number  \t|\t Email\n" +
+                "<---------------------------------------------->\n");
         contactsManager.printLines();
+        System.out.println("<---------------------------------------------->\n");
     }
 
     // Mod Contact
@@ -213,6 +216,13 @@ public class ContactPrograms {
 
     // FIXES
     // <-- seven digit phone dashes
+    public String phoneSevenDigits(String digits){
+        return digits.substring(0,3) + "-" + digits.substring(3);
+    }
+    public String phoneTenDigits(String digits){
+        return digits.substring(0,3) + "-" + digits.substring(3, 6) + "-" + digits.substring(6);
+    }
+
     // <-- ten digit phone dashes
     // <-- eleven digit phone dashes
 

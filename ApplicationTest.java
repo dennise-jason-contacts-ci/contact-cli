@@ -3,17 +3,22 @@ public class ApplicationTest {
 
         // ACTIVATION
         ContactApplication contactApplication = new ContactApplication();
-        contactApplication.runApp();
+//        contactApplication.runApp();
 
 
-        /**
-         * MASSIVE WAYG TESTS
         ContactsManager contactsManager = new ContactsManager("contacts.txt", "data");
         ContactPrograms contactPrograms = new ContactPrograms();
+
+        System.out.println(contactPrograms.phoneSevenDigits("1234567"));
+        System.out.println(contactPrograms.phoneTenDigits("1234567890"));
+
+
+         /**
+         * MASSIVE WAYG TESTS
 //        contactPrograms.findContactByName("Enter First Name");
 //        contactPrograms.findContactByName("Enter First Name", "Enter Last Name");
 //        contactPrograms.checkContactExists("John", "Smith");
-//        contactPrograms.addContact();
+//        c
 //        contactPrograms.addContact();
 //        contactPrograms.readAllContacts();
 
