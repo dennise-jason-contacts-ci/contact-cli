@@ -3,15 +3,12 @@ public class ApplicationTest {
 
         // ACTIVATION
         ContactApplication contactApplication = new ContactApplication();
-//        contactApplication.runApp();
+        contactApplication.runApp();
 
 
-        ContactsManager contactsManager = new ContactsManager("contacts.txt", "data");
-        ContactPrograms contactPrograms = new ContactPrograms();
+//        ContactsManager contactsManager = new ContactsManager("contacts.txt", "data");
+//        ContactPrograms contactPrograms = new ContactPrograms();
 
-        System.out.println(contactPrograms.phoneSevenDigits("1234567"));
-        System.out.println(contactPrograms.phoneTenDigits("1234567890"));
-        System.out.println(contactPrograms.phoneElevenDigits("18005551234"));
 
 
 

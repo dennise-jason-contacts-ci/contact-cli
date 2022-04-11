@@ -59,7 +59,8 @@ public class ContactPrograms {
         return fName + " " + lName + mainLine.substring(mainLine.indexOf(","));
     }
     private String modPhone(String mainLine){
-        String phone = input.getString("Enter First Phone Number: ");
+        String phone = phoneCheck(input.getString("Enter Phone Number: \n" +
+                "--> Do Not Include Dashes <--"));
         int first = mainLine.indexOf(",");
         int end = mainLine.indexOf(",", first + 1);
         return mainLine.substring(0, first) + ", " + phone + mainLine.substring(end);
@@ -123,7 +124,8 @@ public class ContactPrograms {
         if (checkContactExists(fName, lName)) {
             System.out.println("Would Like to Continue?  ");
             if(input.yesNo()){
-                phone = input.getString("Enter Phone Number: ");
+                phone = phoneCheck(input.getString("Enter Phone Number: \n" +
+                        "--> Do Not Include Dashes <--"));
                 email = input.getString("Enter Email: ");
                 contactsManager.addLines(fName + " " +
                         lName + ", " + phone + ", " + email);
@@ -132,7 +134,8 @@ public class ContactPrograms {
                 System.out.println("This function has terminated... ");
             }
         } else {
-            phone = input.getString("Enter Phone Number: ");
+            phone = phoneCheck(input.getString("Enter Phone Number: \n" +
+                    "--> Do Not Include Dashes <--"));
             email = input.getString("Enter Email: ");
             contactsManager.addLines(fName + " " +
                     lName + ", " + phone + ", " + email);
@@ -222,19 +225,20 @@ public class ContactPrograms {
             return phoneSevenDigits(phoneDigits);
         } else {
             System.out.println("That is not a valid entry");
+            return phoneCheck(input.getString("Enter Phone Number: \n" +
+                    "--> Do Not Include Dashes <--"));
         }
-        return "";
     }
 
     // FIXES
     // <-- seven digit phone dashes
-    public String phoneSevenDigits(String digits){
+    private String phoneSevenDigits(String digits){
         return digits.substring(0,3) + "-" + digits.substring(3);
     }
-    public String phoneTenDigits(String digits){
+    private String phoneTenDigits(String digits){
         return digits.substring(0,3) + "-" + digits.substring(3, 6) + "-" + digits.substring(6);
     }
-    public String phoneElevenDigits(String digits){
+    private String phoneElevenDigits(String digits){
         return digits.substring(0,1) + "-" +
                 digits.substring(1, 4) + "-" +
                 digits.substring(4, 7) + "-" +
