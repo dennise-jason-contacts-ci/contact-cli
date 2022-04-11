@@ -23,7 +23,6 @@ public class ContactApplication {
     public void runApp(){
         appGreeting();
         while(appMenuActions(appMenu()));
-        appTerminated();
     }
 
     // Greeting
@@ -77,7 +76,9 @@ public class ContactApplication {
 
     // Exit
     private void appTerminated(){
-        System.out.println("Contacts Application is Terminated. ");
+        System.out.println("Contacts Application is Terminated. \n" +
+                "<--------------------(^>,<^)------------------->");
+
     }
 
 

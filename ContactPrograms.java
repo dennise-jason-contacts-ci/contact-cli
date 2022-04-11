@@ -49,6 +49,7 @@ public class ContactPrograms {
 
         contactsManager.modLine(mContact, changeContact);
         System.out.println("Contact changed:  " + changeContact);
+        System.out.println("\n<---------------------------------------------->\n");
 
     }
 
@@ -141,6 +142,7 @@ public class ContactPrograms {
                     lName + ", " + phone + ", " + email);
             contactsManager.printLines();
         }
+        System.out.println("\n<---------------------------------------------->\n");
     }
 
     // Delete Contact
