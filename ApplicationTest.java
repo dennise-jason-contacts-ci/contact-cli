@@ -1,8 +1,13 @@
 public class ApplicationTest {
     public static void main(String[] args) {
 
-        ContactsManager contactsManager = new ContactsManager("contacts.txt", "data");
+        // ACTIVATION
 
+
+
+        /**
+         * MASSIVE WAYG TESTS
+        ContactsManager contactsManager = new ContactsManager("contacts.txt", "data");
         ContactPrograms contactPrograms = new ContactPrograms();
 //        contactPrograms.findContactByName("Enter First Name");
 //        contactPrograms.findContactByName("Enter First Name", "Enter Last Name");
@@ -20,15 +25,23 @@ public class ApplicationTest {
 
 //        contactsManager.modLine("", "");
 
+        contactPrograms.modContact();
+        */
+
+        /**
+         * SUBSTRING TESTS
+         *
         String x = "Jason Cameron, 123-456-7890, jason@gmail.com";
         int n = x.indexOf(",");
         int o = x.indexOf(",", n + 1);
         System.out.println(x.substring(0, n));
         System.out.println(x.substring(n + 2, o));
         System.out.println(x.substring(o + 2));
-
+        */
 
         /**
+         * SUBSTRING GUIDS
+         *
         String str = "(a+b)*(c+d)*(e+f)";
 
         int first  = str.indexOf("(");

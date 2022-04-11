@@ -36,11 +36,16 @@ public class ContactPrograms {
     public void modContact(){
         String mContact = findContactByBothName(true);
         String changeContact = "";
+
         if(mContact.length() > 0) {
-            int menuChoice = chooseModMenu(mContact);
-            chooseModOption(menuChoice, mContact);
+            int menuChoice = chooseModMenu();
+            changeContact = chooseModOption(menuChoice, mContact);
+        } else {
+            System.out.println("Something broke in modContact()");
         }
 
+        contactsManager.modLine(mContact, changeContact);
+        System.out.println("Contact changed:  " + changeContact);
 
     }
 
@@ -54,7 +59,7 @@ public class ContactPrograms {
         String phone = input.getString("Enter First Phone Number: ");
         int first = mainLine.indexOf(",");
         int end = mainLine.indexOf(",", first + 1);
-        return mainLine.substring(0, first) + phone + mainLine.substring(end);
+        return mainLine.substring(0, first) + ", " + phone + mainLine.substring(end);
     }
     private String modEmail(String mainLine){
         String email = input.getString("Enter First Email: ");
@@ -72,15 +77,15 @@ public class ContactPrograms {
         int end = mainLine.indexOf(",", first + 1);
         return fName + " " + lName + ", " + phone + ", " + email;
     }
-
-    private int chooseModMenu(String mainLine){
-        System.out.println("Warning! Now modifying contact: " + mainLine);
-        return input.getInt(1, 4,"Choose which part of the contact you would like to edit.\n" +
+    private int chooseModMenu(){
+        System.out.println("Warning! Now modifying contact! ");
+        return input.getInt(1, 5,"Choose what to edit.\n" +
                 "--> Must Select a Number <--\n" +
                 "1. Name\n" +
                 "2. Phone\n" +
                 "3. Email\n" +
-                "4. The Entire Contact");
+                "4. The Entire Contact\n" +
+                "5. Exit");
     }
     private String chooseModOption(int choice, String mainLine){
         switch (choice){
@@ -96,6 +101,9 @@ public class ContactPrograms {
             case 4:
                 System.out.println(mainLine);
                 return modAll(mainLine);
+            case 5:
+                System.out.println("You chose Not to eit a contact.");
+                return mainLine;
             default:
                 return "";
         }
@@ -202,8 +210,13 @@ public class ContactPrograms {
         }
         return false;
     }
+    // <-- Email check here
+    // <-- Phone check
 
-
+    // FIXES
+    // <-- seven digit phone dashes
+    // <-- ten digit phone dashes
+    // <-- eleven digit phone dashes
 
 
 
