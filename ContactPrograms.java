@@ -213,6 +213,18 @@ public class ContactPrograms {
     }
     // <-- Email check here
     // <-- Phone check
+    public String phoneCheck(String phoneDigits){
+        if(phoneDigits.length() == 11){
+            return phoneElevenDigits(phoneDigits);
+        } else if (phoneDigits.length() == 10){
+            return phoneTenDigits(phoneDigits);
+        } else if (phoneDigits.length() == 7){
+            return phoneSevenDigits(phoneDigits);
+        } else {
+            System.out.println("That is not a valid entry");
+        }
+        return "";
+    }
 
     // FIXES
     // <-- seven digit phone dashes
@@ -221,6 +233,12 @@ public class ContactPrograms {
     }
     public String phoneTenDigits(String digits){
         return digits.substring(0,3) + "-" + digits.substring(3, 6) + "-" + digits.substring(6);
+    }
+    public String phoneElevenDigits(String digits){
+        return digits.substring(0,1) + "-" +
+                digits.substring(1, 4) + "-" +
+                digits.substring(4, 7) + "-" +
+                digits.substring(7);
     }
 
     // <-- ten digit phone dashes
