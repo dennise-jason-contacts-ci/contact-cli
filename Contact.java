@@ -1,7 +1,7 @@
 /**
  *   CONTACT
  *
- *   Description:  Not sure if this will be used in the overall app.
+ *   Description:  Not used, but left in for possible app expansion.
  */
 
 public class Contact {

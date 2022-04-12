@@ -217,7 +217,7 @@ public class ContactPrograms {
         return false;
     }
     // <-- Email check here
-    // <-- Phone check
+    // Phone check
     public String phoneCheck(String phoneDigits){
         if(phoneDigits.length() == 11){
             return phoneElevenDigits(phoneDigits);
@@ -232,8 +232,7 @@ public class ContactPrograms {
         }
     }
 
-    // FIXES
-    // <-- seven digit phone dashes
+    // Digit checks
     private String phoneSevenDigits(String digits){
         return digits.substring(0,3) + "-" + digits.substring(3);
     }
@@ -247,8 +246,7 @@ public class ContactPrograms {
                 digits.substring(7);
     }
 
-    // <-- ten digit phone dashes
-    // <-- eleven digit phone dashes
+
 
 
 
