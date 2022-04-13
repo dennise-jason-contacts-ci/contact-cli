@@ -15,7 +15,6 @@ Other Ideas...
 - [X] Include email
 - [X] Allow contact modifications
 - [] Check Email validity 
-- [] Backup
 
 ## Assignment Recommendations:
 - The text file should contain one contact per line

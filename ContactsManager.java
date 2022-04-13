@@ -117,13 +117,14 @@ public class ContactsManager {
                 System.out.println("Found the Contact...");
                 fileData.remove(delString);
                 writeFile();
-                System.out.println("Contact: " +
-                        delString.substring(0, delString.indexOf(",")) +
-                        " was deleted.");
+                System.out.println("Deleted Contact: " +
+                        delString.substring(0, delString.indexOf("|")));
+                System.out.println("\n<---------------------------------------------->\n");
                 return fileData;
             }
         }
         System.out.println("Error, unable to Delete.");
+        System.out.println("\n<---------------------------------------------->\n");
         return fileData;
     }
 
@@ -134,13 +135,14 @@ public class ContactsManager {
                 fileData.remove(modLine);
                 fileData.add(changedLine);
                 writeFile();
-                System.out.println("Contact: " +
-                        modLine.substring(0, modLine.indexOf(",")) +
-                        " was changed.");
+                System.out.println("Modified Contact: " +
+                        modLine.substring(0, modLine.indexOf("|")));
+                System.out.println("\n<---------------------------------------------->\n");
                 return fileData;
             }
         }
         System.out.println("Error, unable to change contact.");
+        System.out.println("\n<---------------------------------------------->\n");
         return fileData;
     }
 
