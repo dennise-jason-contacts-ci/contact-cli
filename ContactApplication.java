@@ -38,7 +38,7 @@ public class ContactApplication {
         return input.getInt(1, 6, "" +
                         "Please select an option from the list.\n" +
                         "--> Must Select a Number <--\n" +
-                        "1. View All Contacts\n" +           //  <-- will need to be sorted later!
+                        "1. View All Contacts\n" +
                         "2. View A Contact\n" +
                         "3. Add Contact\n" +
                         "4. Edit Contact\n" +
@@ -83,4 +83,4 @@ public class ContactApplication {
 
 
 
-}
+}  //  <--END

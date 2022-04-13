@@ -29,7 +29,7 @@ public class ContactPrograms {
     // METHS
     // Read All
     public void readAllContacts(){
-        System.out.println("Name \t|\t Phone Number  \t|\t Email\n" +
+        System.out.println("Name                     | Phone Number        | Email\n" +
                 "<---------------------------------------------->\n");
         contactsManager.printLines();
         System.out.println("<---------------------------------------------->\n");
@@ -48,39 +48,42 @@ public class ContactPrograms {
         }
 
         contactsManager.modLine(mContact, changeContact);
-        System.out.println("Contact changed:  " + changeContact);
+        System.out.println("Contact Changed:  " + changeContact);
         System.out.println("\n<---------------------------------------------->\n");
 
     }
 
     // Mod Contact <-- HELPERS
     private String modName(String mainLine){
-        String fName = input.getString("Enter First Name: ");
-        String lName = input.getString("Enter Last Name: ");
-        return fName + " " + lName + mainLine.substring(mainLine.indexOf(","));
+        String fName = input.getString("Enter First Name: ").trim();
+        String lName = input.getString("Enter Last Name: ").trim();
+        String wholeName = includeSpaces(fName + " " + lName, 25);
+        return wholeName + mainLine.substring(mainLine.indexOf("|"));
     }
     private String modPhone(String mainLine){
-        String phone = phoneCheck(input.getString("Enter Phone Number: \n" +
-                "--> Do Not Include Dashes <--"));
-        int first = mainLine.indexOf(",");
-        int end = mainLine.indexOf(",", first + 1);
-        return mainLine.substring(0, first) + ", " + phone + mainLine.substring(end);
+        String phone = includeSpaces(phoneCheck(input.getString("Enter Phone Number: \n" +
+                "--> Do Not Include Dashes <--")), 20);
+        int first = mainLine.indexOf("|");
+        int end = mainLine.indexOf("|", first + 1);
+        return mainLine.substring(0, first) + "| " + phone + mainLine.substring(end);
     }
     private String modEmail(String mainLine){
-        String email = input.getString("Enter First Email: ");
-        int first = mainLine.indexOf(",");
-        int end = mainLine.indexOf(",", first + 1);
-        return mainLine.substring(0, end) + ", " + email;
+        String email = input.getString("Enter First Email: ").trim();
+        int first = mainLine.indexOf("|");
+        int end = mainLine.indexOf("|", first + 1);
+        return mainLine.substring(0, end) + "| " + email;
     }
     private String modAll(String mainLine){
-        String fName = input.getString("Enter First Name: ");
-        String lName = input.getString("Enter Last Name: ");
-        String phone = input.getString("Enter First Phone Number: ");
+        String fName = input.getString("Enter First Name: ").trim();
+        String lName = input.getString("Enter Last Name: ").trim();
+        String phone = includeSpaces(phoneCheck(input.getString("Enter Phone Number: \n" +
+                "--> Do Not Include Dashes <--")), 20);
         String email = input.getString("Enter First Email: ");
+        String wholeName = includeSpaces(fName + " " + lName, 25);
 
-        int first = mainLine.indexOf(",");
-        int end = mainLine.indexOf(",", first + 1);
-        return fName + " " + lName + ", " + phone + ", " + email;
+        int first = mainLine.indexOf("|");
+        int end = mainLine.indexOf("|", first + 1);
+        return wholeName + "| " + phone + "| " + email;
     }
     private int chooseModMenu(){
         System.out.println("Warning! Now modifying contact! ");
@@ -107,7 +110,7 @@ public class ContactPrograms {
                 System.out.println(mainLine);
                 return modAll(mainLine);
             case 5:
-                System.out.println("You chose Not to eit a contact.");
+                System.out.println("You Chose Not to Edit a Contact.");
                 return mainLine;
             default:
                 return "";
@@ -117,29 +120,30 @@ public class ContactPrograms {
 
     // Add
     public void addContact(){
-        String fName = input.getString("Enter First Name: ");
-        String lName = input.getString("Enter Last Name: ");
+        String fName = input.getString("Enter First Name: ").trim();
+        String lName = input.getString("Enter Last Name: ").trim();
+        String wholeName = includeSpaces(fName + " " + lName, 25);
         String phone = "";
         String email = "";
 
         if (checkContactExists(fName, lName)) {
             System.out.println("Would Like to Continue?  ");
             if(input.yesNo()){
-                phone = phoneCheck(input.getString("Enter Phone Number: \n" +
-                        "--> Do Not Include Dashes <--"));
+                phone = includeSpaces(phoneCheck(input.getString("Enter Phone Number: \n" +
+                        "--> Do Not Include Dashes <--")), 20);
                 email = input.getString("Enter Email: ");
-                contactsManager.addLines(fName + " " +
-                        lName + ", " + phone + ", " + email);
+                contactsManager.addLines(wholeName +
+                        "| " + phone + "| " + email);
                 contactsManager.printLines();
             } else {
                 System.out.println("This function has terminated... ");
             }
         } else {
-            phone = phoneCheck(input.getString("Enter Phone Number: \n" +
-                    "--> Do Not Include Dashes <--"));
+            phone = includeSpaces(phoneCheck(input.getString("Enter Phone Number: \n" +
+                    "--> Do Not Include Dashes <--")), 20);
             email = input.getString("Enter Email: ");
-            contactsManager.addLines(fName + " " +
-                    lName + ", " + phone + ", " + email);
+            contactsManager.addLines(wholeName +
+                    "| " + phone + "| " + email);
             contactsManager.printLines();
         }
         System.out.println("\n<---------------------------------------------->\n");
@@ -165,7 +169,7 @@ public class ContactPrograms {
 
     // Find
     public void findContactByFirstName(){
-        String name = input.getString("Enter First Name: ");
+        String name = input.getString("Enter First Name: ").trim();
         for (String line : contactsManager.getFileData()) {
             if (checkFirstName(line.toLowerCase(), name.toLowerCase())){
                 System.out.println(line);
@@ -173,7 +177,7 @@ public class ContactPrograms {
         }
     }
     public void findContactByLastName(){
-        String name = input.getString("Enter Last Name: ");
+        String name = input.getString("Enter Last Name: ").trim();
         for (String line : contactsManager.getFileData()) {
             if (checkLastName(line.toLowerCase(), name.toLowerCase())){
                 System.out.println(line);
@@ -186,10 +190,11 @@ public class ContactPrograms {
         String name1 = input.getString("Enter First Name: ");
         String name2 = input.getString("Enter Last Name: ");
         for (String line : contactsManager.getFileData()) {
-            if (checkFirstName(line.toLowerCase(), name1.toLowerCase())
+            if (checkFirstName(line.toLowerCase().trim(), name1.toLowerCase().trim())
                     &&
-                    checkLastName(line.toLowerCase(), name2.toLowerCase())){
-                System.out.println(line);
+                    checkLastName(line.toLowerCase().trim(), name2.toLowerCase().trim())){
+                System.out.println("Found Contact: " + line);
+                System.out.println("--------------------------------------------");
                 return line;
             }
         }
@@ -198,18 +203,18 @@ public class ContactPrograms {
     }
 
 
-    // CHECKS
+    // CHECKS & FIXES
     private boolean checkFirstName(String line, String name){
-        return name.equals(line.substring(0, line.indexOf(" ")));
+        return name.trim().equals(line.substring(0, line.indexOf(" ")));
     }
     private boolean checkLastName(String line, String name){
-        return name.contains(line.substring(line.indexOf(" ") + 1, line.indexOf(",")));
+        return name.contains(line.substring(line.indexOf(" ") + 1, line.indexOf("|")).trim());
     }
     private boolean checkContactExists(String name1, String name2){
         for (String line : contactsManager.getFileData()) {
-            if (checkFirstName(line.toLowerCase(), name1.toLowerCase())
+            if (checkFirstName(line.toLowerCase(), name1.trim().toLowerCase())
                             &&
-                            checkLastName(line.toLowerCase(), name2.toLowerCase())){
+                            checkLastName(line.toLowerCase(), name2.trim().toLowerCase())){
                 System.out.println("That contact already exists.");
                 return true;
             }
@@ -217,7 +222,7 @@ public class ContactPrograms {
         return false;
     }
     // <-- Email check here
-    // <-- Phone check
+    // Phone check
     public String phoneCheck(String phoneDigits){
         if(phoneDigits.length() == 11){
             return phoneElevenDigits(phoneDigits);
@@ -232,8 +237,7 @@ public class ContactPrograms {
         }
     }
 
-    // FIXES
-    // <-- seven digit phone dashes
+    // Digit checks
     private String phoneSevenDigits(String digits){
         return digits.substring(0,3) + "-" + digits.substring(3);
     }
@@ -247,11 +251,16 @@ public class ContactPrograms {
                 digits.substring(7);
     }
 
-    // <-- ten digit phone dashes
-    // <-- eleven digit phone dashes
+    // Space Checks
+    public String includeSpaces(String nameOrPhone, int totalSpaces){
+        if((totalSpaces - nameOrPhone.length())  == 0) return nameOrPhone;
+        nameOrPhone += " ";
+        return includeSpaces(nameOrPhone, totalSpaces);
+    }
+
+    // Email Checks
 
 
 
 
-
-}
+}  //  <-- END
